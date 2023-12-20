@@ -9,6 +9,7 @@ class inventory
 public:
 private:
 };
+
 int main()
 {
 	setlocale(LC_ALL, "rus");
