@@ -22,7 +22,6 @@ private:
 	int wear;//процент износ
 	int price;//инвентаризационная стоимость
 };
-
 int main()
 {
 	setlocale(LC_ALL, "rus");
