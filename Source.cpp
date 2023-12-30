@@ -13,6 +13,7 @@ public:
 	void print_info();
 	void print_field();
 	void print_mm();
+	void print_data();
 	void set_data();
 	void write_file(vector<inventory>& arr, string path);
 	void read_file(vector<inventory>& arr, string path);
@@ -136,24 +137,35 @@ void inventory::print_info()
 void inventory::print_field()
 {
 	cout << "Доступные поля:" << endl;
-	cout << "1 - кадастровый номер" << endl;
-	cout << "2 - адрес" << endl;
-	cout << "3 - год постройки" << endl;
-	cout << "4 - площадь участка" << endl;
-	cout << "5 - площадь застройки" << endl;
-	cout << "6 - процент износа" << endl;
-	cout << "7 - инвентаризационная стоимсть" << endl;
+	cout << "1 - Кадастровый номер" << endl;
+	cout << "2 - Адрес" << endl;
+	cout << "3 - Год постройки" << endl;
+	cout << "4 - Площадь участка" << endl;
+	cout << "5 - Площадь застройки" << endl;
+	cout << "6 - Процент износа" << endl;
+	cout << "7 - Инвентаризационная стоимсть" << endl;
 }
 
 void inventory::print_mm()
 {
 	cout << "Доступные поля: " << endl;
-	cout << "1 - кадастровый номер" << endl;
-	cout << "2 - год постройки" << endl;
-	cout << "3 - площадь участка" << endl;
-	cout << "4 - площадь застройки" << endl;
-	cout << "5 - процент износа" << endl;
-	cout << "6 - инвентаризационная стоимсть" << endl;
+	cout << "1 - Кадастровый номер" << endl;
+	cout << "2 - Год постройки" << endl;
+	cout << "3 - Площадь участка" << endl;
+	cout << "4 - Площадь застройки" << endl;
+	cout << "5 - Процент износа" << endl;
+	cout << "6 - Инвентаризационная стоимсть" << endl;
+}
+
+void inventory::print_data()
+{
+	cout << "Кадастровый номер : " << this->number << endl;
+	cout << "Адрес : " << this->adres << endl;
+	cout << "Год постройки : " << this->year << endl;
+	cout << "Площадь уччастка : " << this->area_region << endl;
+	cout << "Площадь застройки : " << this->area_build << endl;
+	cout << "Процент износа : " << this->wear << endl;
+	cout << "Инвентаризационная стоимость : " << this->price << endl;
 }
 
 void inventory::set_data()
@@ -278,21 +290,70 @@ void inventory::search_data(vector<inventory>& arr)
 		{
 			if (el.number == stoi(data))
 			{
-
+				el.print_data();
+				check = true;
 			}
 		}
 		break;
 	case 2:
+		for (auto& el : arr)
+		{
+			if (el.adres == data)
+			{
+				el.print_data();
+				check = true;
+			}
+		}
 		break;
 	case 3:
+		for (auto& el : arr)
+		{
+			if (el.year == stoi(data))
+			{
+				el.print_data();
+				check = true;
+			}
+		}
 		break;
 	case 4:
+		for (auto& el : arr)
+		{
+			if (el.area_region == stoi(data))
+			{
+				el.print_data();
+				check = true;
+			}
+		}
 		break;
 	case 5:
+		for (auto& el : arr)
+		{
+			if (el.area_build == stoi(data))
+			{
+				el.print_data();
+				check = true;
+			}
+		}
 		break;
 	case 6:
+		for (auto& el : arr)
+		{
+			if (el.wear == stoi(data))
+			{
+				el.print_data();
+				check = true;
+			}
+		}
 		break;
 	case 7:
+		for (auto& el : arr)
+		{
+			if (el.price == stoi(data))
+			{
+				el.print_data();
+				check = true;
+			}
+		}
 		break;
 	default:
 		cout << "Некорректный ввод" << endl;
