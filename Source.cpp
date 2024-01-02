@@ -19,6 +19,9 @@ public:
 	void read_file(vector<inventory>& arr, string path);
 	void delete_obj(vector<inventory>& arr);
 	void search_data(vector<inventory>& arr);
+	void search_min(vector<inventory>& arr);
+	void search_max(vector<inventory>& arr);
+	void sort_field(vector<inventory>& arr);
 private:
 	int number;//кадастровый номер
 	string adres;//адрес
@@ -35,10 +38,12 @@ int main()
 	vector<inventory> arr;
 	string path = "data.txt";
 	int var_switch = 0;
+	int count = 0;
 	bool exit = false;
+	invent.read_file(arr, path);
+	invent.print_info();
 	while (!exit)
 	{
-		invent.print_info();
 		cout << "Выберите режим: " << endl;
 		cin >> var_switch;
 		switch (var_switch)
@@ -60,18 +65,75 @@ int main()
 			cout << "=============================================" << endl;
 			break;
 		case 4:
-			invent.delete_obj(arr);
-			cout << "=============================================" << endl;
+			if (arr.empty())
+			{
+				cout << "В векторе нет элементов" << endl;
+			}
+			else
+			{
+				invent.delete_obj(arr);
+				cout << "=============================================" << endl;
+			}
 			break;
 		case 5:
+			if (arr.empty())
+			{
+				cout << "В векторе нет элементов" << endl;
+			}
+			else
+			{
+				invent.search_data(arr);
+				cout << "=============================================" << endl;
+			}
 			break;
 		case 6:
+			if (arr.empty())
+			{
+				cout << "В векторе нет элементов" << endl;
+			}
+			else
+			{
+				invent.search_min(arr);
+				cout << "=============================================" << endl;
+			}
 			break;
 		case 7:
+			if (arr.empty())
+			{
+				cout << "В векторе нет элементов" << endl;
+			}
+			else
+			{
+				invent.search_max(arr);
+				cout << "=============================================" << endl;
+			}
 			break;
 		case 8:
+			if (arr.empty())
+			{
+				cout << "В векторе нет элементов" << endl;
+			}
+			else
+			{
+				invent.sort_field(arr);
+				cout << "=============================================" << endl;
+			}
 			break;
 		case 9:
+			if (arr.empty())
+			{
+				cout << "В векторе нет элементов" << endl;
+			}
+			else
+			{
+				count = 0;
+				for (auto& el : arr)
+				{
+					cout << "Объект " << count << endl;
+					el.print_data();
+					count++;
+				}
+			}
 			break;
 		case 10:
 			exit = true;
@@ -358,5 +420,211 @@ void inventory::search_data(vector<inventory>& arr)
 	default:
 		cout << "Некорректный ввод" << endl;
 		break;
+	}
+	if (!check)
+	{
+		cout << "Данные не найдены" << endl;
+	}
+}
+
+void inventory::search_min(vector<inventory>& arr)
+{
+	int min = 1000000;
+	int var = 0;
+	inventory obj;
+	obj.print_mm();
+	cout << "Выберите нужное поле" << endl;
+	cin >> var;
+	if (var >= 0 && var < arr.size())
+	{
+		switch (var)
+		{
+		case 1:
+			for (auto& el : arr)
+			{
+				if (el.number < min)
+				{
+					min = el.number;
+				}
+			}
+			cout << "Минимальный элемент = " << min << endl;
+			break;
+		case 2:
+			for (auto& el : arr)
+			{
+				if (el.year < min)
+				{
+					min = el.year;
+				}
+			}
+			cout << "Минимальный элемент = " << min << endl;
+			break;
+		case 3:
+			for (auto& el : arr)
+			{
+				if (el.area_region < min)
+				{
+					min = area_region;
+				}
+			}
+			cout << "Минимальный элемент = " << min << endl;
+			break;
+		case 4:
+			for (auto& el : arr)
+			{
+				if (el.area_build < min)
+				{
+					min = el.area_build;
+				}
+			}
+			cout << "Минимальный элемент = " << min << endl;
+			break;
+		case 5:
+			for (auto& el : arr)
+			{
+				if (el.wear < min)
+				{
+					min = el.wear;
+				}
+			}
+			cout << "Минимальный элемент = " << min << endl;
+			break;
+		case 6:
+			for (auto& el : arr)
+			{
+				if (el.price < min)
+				{
+					min = el.price;
+				}
+			}
+			cout << "Минимальный элемент = " << min << endl;
+			break;
+		default:
+			cout << "Некорректный ввод" << endl;
+			break;
+		}
+	}
+	else
+	{
+		cout << "Некорректный ввод" << endl;
+	}
+}
+
+void inventory::search_max(vector<inventory>& arr)
+{
+	int max = 0;
+	int var = 0;
+	inventory obj;
+	obj.print_mm();
+	cout << "Выберите нужное поле" << endl;
+	cin >> var;
+	if (var >= 0 && var < arr.size())
+	{
+		switch (var)
+		{
+		case 1:
+			for (auto& el : arr)
+			{
+				if (el.number > max)
+				{
+					max = el.number;
+				}
+			}
+			cout << "Минимальный элемент = " << max << endl;
+			break;
+		case 2:
+			for (auto& el : arr)
+			{
+				if (el.year > max)
+				{
+					max = el.year;
+				}
+			}
+			cout << "Минимальный элемент = " << max << endl;
+			break;
+		case 3:
+			for (auto& el : arr)
+			{
+				if (el.area_region > max)
+				{
+					max = area_region;
+				}
+			}
+			cout << "Минимальный элемент = " << max << endl;
+			break;
+		case 4:
+			for (auto& el : arr)
+			{
+				if (el.area_build > max)
+				{
+					max = el.area_build;
+				}
+			}
+			cout << "Минимальный элемент = " << max << endl;
+			break;
+		case 5:
+			for (auto& el : arr)
+			{
+				if (el.wear > max)
+				{
+					max = el.wear;
+				}
+			}
+			cout << "Минимальный элемент = " << max << endl;
+			break;
+		case 6:
+			for (auto& el : arr)
+			{
+				if (el.price > max)
+				{
+					max = el.price;
+				}
+			}
+			cout << "Минимальный элемент = " << max << endl;
+			break;
+		default:
+			cout << "Некорректный ввод" << endl;
+			break;
+		}
+	}
+	else
+	{
+		cout << "Некорректный ввод" << endl;
+	}
+}
+
+void inventory::sort_field(vector<inventory>& arr)
+{
+	inventory obj;
+	int var = 0;
+	obj.print_field();
+	cout << "Выберите нужное поле" << endl;
+	cin >> var;
+	if (var >= 0 && var < arr.size())
+	{
+		switch (var)
+		{
+		case 1:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.number < i2.number;});
+			break;
+		case 2:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.adres < i2.adres;});
+			break;
+		case 3:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.year < i2.year;});
+			break;
+		case 4:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.area_region < i2.area_region;});
+			break;
+		case 5:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.area_build < i2.area_build;});
+			break;
+		case 6:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.wear < i2.wear;});
+			break;
+		case 7:
+			sort(arr.begin(), arr.end(), [](const inventory i1, const inventory i2) {return i1.price < i2.price;});
+			break;
+		}
 	}
 }
