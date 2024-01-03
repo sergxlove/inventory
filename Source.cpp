@@ -13,11 +13,11 @@ public://паблик секци€
 	~inventory();//деструктор
 	void print_info();//метод, вывод€щий информацию о консольном меню
 	void print_field();//метод, вывод€щий наименование доступных полей
-	void print_mm();//метод, вывод€щий наименование доступных полей 
+	void print_mm();//метод, вывод€щий наименование доступных полей дл€ нахождени€ минимального или максимального
 	void print_data();//метод, вывод€щий данные полей объекта
 	void set_data();//метод, осуществл€ющий ввод данных в объект
-	void write_file(vector<inventory>& arr, string path);//метод, осуществл€ющиий запись данных в файл
-	void read_file(vector<inventory>& arr, string path);//метод, осуществл€юющий чтение данных из файла 
+	void write_file(vector<inventory>& arr, string path);//метод, осуществл€ющий запись данных в файл
+	void read_file(vector<inventory>& arr, string path);//метод, осуществл€ющий чтение данных из файла 
 	void delete_obj(vector<inventory>& arr);//метод, осуществл€ющий удаление объекта
 	void search_data(vector<inventory>& arr);//метод, производ€щий поиск данных
 	void search_min(vector<inventory>& arr);//метод, отвечающий за нахождение минимального элемента
@@ -118,6 +118,7 @@ int main()//основна€ программа
 			else
 			{
 				invent.sort_field(arr);//сортировка вектора по полю
+				cout << "—ортировка проведена успешно" << endl;
 				cout << "=============================================" << endl;
 			}
 			break;
